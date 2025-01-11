@@ -1,4 +1,4 @@
-import { App, Stack } from "aws-cdk-lib";
+import { App, Duration, Stack, } from "aws-cdk-lib";
 import * as lambda from "aws-cdk-lib/aws-lambda";
 import * as path from "path";
 
@@ -18,6 +18,7 @@ const createLambdaFunction = (name: string, path: string) => {
     handler: "main.handle",
     memorySize: 1024,
     environment,
+    timeout: Duration.seconds(800),
   });
 
   return lambdaFunction;
